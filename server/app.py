@@ -14,8 +14,7 @@ def hello():
 @app.route("/users/<username>",methods=["POST"])
 def create():
     user = User("nobi")
-    session.add(user)
-    session.commit()
+
     return "hello"
 
 
