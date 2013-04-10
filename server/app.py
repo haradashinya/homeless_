@@ -3,8 +3,6 @@
 
 from flask import Flask,render_template
 from models.user import User
-user = User()
-print user.create()
 
 app = Flask(__name__)
 
@@ -15,11 +13,13 @@ def hello():
 # register user
 @app.route("/users/<username>",methods=["POST"])
 def create():
+    user = User("nobi")
+    session.add(user)
+    session.commit()
     return "hello"
 
 
 if __name__ == "__main__":
-    print User
     app.run(host="0.0.0.0",port=5001,debug=True)
 
 

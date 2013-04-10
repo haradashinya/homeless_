@@ -4,7 +4,7 @@ from sqlalchemy.orm import scoped_session,sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 engine = create_engine("sqlite:///tmp/app.db", convert_unicode = True)
 
-class Base:
+class BaseModel:
     def __init__(self):
         print "called base"
         pass
