@@ -1,25 +1,20 @@
 #coding: utf-8
-from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session,sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column,Integer,String,ForeignKey
-from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import relationship, backref
-
-engine = create_engine("sqlite:///app.db", convert_unicode = True,echo=True)
-Base = declarative_base()
+import db
 
 
 # init data bases.
-Base.metadata.drop_all(engine)
+db.drop_all()
 
 
-
-Session = sessionmaker(bind=engine)
+Session = sessionmaker(bind=db.engine)
 session = Session()
 
 
-class Score(Base):
+class Score(db.Base):
     __tablename__ = "scores"
     id = Column(Integer,primary_key=True)
     point = Column(Integer)
@@ -30,7 +25,7 @@ class Score(Base):
 
 
 
-class User(Base):
+class User(db.Base):
     __tablename__ = "users"
     id = Column(Integer,primary_key=True)
     name = Column(String)
@@ -48,6 +43,10 @@ class User(Base):
     def push_to_score(self,point):
         self.scores.append(Score(point))
 
+    # return all scores.
+    def all_scores():
+        pass
+
     # return high score of the user.
     def high_score(self):
         res = []
@@ -57,14 +56,15 @@ class User(Base):
         print "log: high: %i " % high
         return high
 
+db.init_db()
 
-Base.metadata.create_all(engine)
-
+# create user
 user = User("nobinobi")
 
 user.push_to_score(10)
 user.push_to_score(10)
 user.push_to_score(15)
+user.push_to_score(30)
 user.high_score()
 
 
