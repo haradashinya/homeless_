@@ -4,24 +4,17 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column,Integer,String,ForeignKey
 from sqlalchemy.orm import relationship, backref
 import db
+from score import Score
 
 
-# init data bases.
-db.drop_all()
+
 
 
 Session = sessionmaker(bind=db.engine)
 session = Session()
 
 
-class Score(db.Base):
-    __tablename__ = "scores"
-    id = Column(Integer,primary_key=True)
-    point = Column(Integer)
-    user_id = Column(Integer,ForeignKey('users.id'))
 
-    def __init__(self,point):
-        self.point = int(point)
 
 
 
@@ -33,7 +26,6 @@ class User(db.Base):
 
     def __init__(self,name):
         self.name = name
-        pass
 
 
     def __repr__(self):
@@ -56,6 +48,7 @@ class User(db.Base):
         print "log: high: %i " % high
         return high
 
+db.drop_all()
 db.init_db()
 
 # create user
@@ -65,8 +58,9 @@ user.push_to_score(10)
 user.push_to_score(10)
 user.push_to_score(15)
 user.push_to_score(30)
+user.push_to_score(50)
+user.push_to_score(55)
 user.high_score()
-
 
 session.add(user)
 session.commit()

@@ -5,9 +5,15 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column,Integer,String,ForeignKey
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import relationship, backref
+import db
 
 
-engine = create_engine("sqlite:///app.db", convert_unicode = True,echo=True)
-Base = declarative_base()
-Session = sessionmaker(bind=engine)
-session = Session()
+class Score(db.Base):
+    __tablename__ = "scores"
+    id = Column(Integer,primary_key=True)
+    point = Column(Integer)
+    user_id = Column(Integer,ForeignKey('users.id'))
+
+    def __init__(self,point):
+        self.point = int(point)
+
