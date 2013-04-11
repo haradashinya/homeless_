@@ -1,13 +1,11 @@
 # coding: utf-8
 
+
+from sqlalchemy.orm import scoped_session,sessionmaker
 from nose.tools import eq_
 import models.db as db
 from models.user import User
 from models.score import Score
-
-# db.drop_all()
-# db.init_db()
-
 # create user
 # user = User("nobinobi")
 #
@@ -22,11 +20,24 @@ from models.score import Score
 # session.add(user)
 # session.commit()
 
-class TestDB(object):
-    def setup(self):
-        print "hello"
+Session = sessionmaker(bind=db.engine)
+session = Session()
 
 
+""" it should create user """
+def test_create_user():
+    user1 = User("nobinobi")
+    user2 = User("foo")
+    session.add(user1)
+    session.add(user2)
+    session.commit()
+    u = session.query(User).filter_by(name = "nobinobi").first()
+    _user =  session.query(User).filter_by(name = "nobinobi").first()
+    eq_(u.name,"nobinobi")
+
+
+def test_report_score():
+    pass
 
 
 
