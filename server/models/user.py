@@ -6,17 +6,8 @@ from sqlalchemy.orm import relationship, backref
 import db
 from score import Score
 
-
-
-
-
 Session = sessionmaker(bind=db.engine)
 session = Session()
-
-
-
-
-
 
 class User(db.Base):
     __tablename__ = "users"
@@ -48,25 +39,22 @@ class User(db.Base):
         print "log: high: %i " % high
         return high
 
-db.drop_all()
-db.init_db()
+# db.drop_all()
+# db.init_db()
 
 # create user
-user = User("nobinobi")
-
-user.push_to_score(10)
-user.push_to_score(10)
-user.push_to_score(15)
-user.push_to_score(30)
-user.push_to_score(50)
-user.push_to_score(55)
-user.high_score()
-
-session.add(user)
-session.commit()
-
-
-
+# user = User("nobinobi")
+#
+# user.push_to_score(10)
+# user.push_to_score(10)
+# user.push_to_score(15)
+# user.push_to_score(30)
+# user.push_to_score(50)
+# user.push_to_score(55)
+# user.high_score()
+#
+# session.add(user)
+# session.commit()
 
 # for user in session.query(User).all():
 #     for score in user.scores:
