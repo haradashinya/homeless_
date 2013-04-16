@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "hello"
+    return render_template("index.html")
 
 # register user
 @app.route("/users/<username>",methods=["POST"])

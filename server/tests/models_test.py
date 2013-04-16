@@ -37,7 +37,9 @@ def test_create_user():
 
 
 def test_report_score():
-    pass
+    user = session.query(User).filter_by(name = "nobinobi").first()
+    print "push to score"
+    print user
 
 
 
