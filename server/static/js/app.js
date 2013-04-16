@@ -24,6 +24,31 @@ $(function(){
 
   };
 
+  var isExist = function(item){
+    var flag = false;
+    data.forEach(function(d){
+      if (item === d){
+        flag =  true;
+        return flag;
+      }else{
+        flag =  false;
+      }
+    });
+    return flag;
+  };
+  var pushData = function(){
+    while(data.length !== 5){
+      console.log("try");
+      var d = picDir();
+      if (isExist(d)){
+        console.log("already");
+      }else{
+        data.push(d);
+      }
+    }
+    console.log(data);
+  };
+
   var wrapped = function(html){
     html += "<button>men</button>";
     html += "<button>women</button>";
@@ -31,26 +56,14 @@ $(function(){
     return html;
   };
 
-
+  pushData();
 
   var renderPic = function(){
     var str = "";
     var $el = $("#pictures");
 
     for(var i = 0 ;  i < 5;i++){
-      var dir = picDir();
-      if(data.length === 0){
-        data.push(dir);
-      }
-
-
-
-
-
-
-
-
-
+      var dir = data[i];
 
       var correctType = dir.split('\/')[2];
 
@@ -74,7 +87,6 @@ $(function(){
         str += "<button>okama</button>";
       }
       str += "</div>";
-
     }
 
     $el.html(str);
@@ -85,12 +97,12 @@ $(function(){
 
   var renderScore = function(){
     var $res = $("#res");
+
     $res.html("score: " + score);
   };
 
   $("button").bind("click",function(e){
     var target = $(this).attr("class");
-
 
     $closest = $(this).closest(".buttons");
     $correct = $(".correct");
