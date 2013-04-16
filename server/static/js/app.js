@@ -1,5 +1,6 @@
 $(function(){
   console.log("called");
+  var score = 0;
 
   // return type of man/women/okama
 
@@ -29,28 +30,65 @@ $(function(){
   };
 
 
+
   var renderPic = function(){
     var str = "";
     var $el = $("#pictures");
 
     for(var i = 0 ;  i < 5;i++){
       var dir = picDir();
-      console.log(dir);
+      var correctType = dir.split('\/')[2];
 
       str += "<li><img class='pic' src='";
       str += dir;
       str += "'></li>";
-      str += "<button>men</button>";
-      str += "<button>women</button>";
-      str += "<button>okama</button>";
+      if (correctType === "men"){
+        str += "<button class='correct'>men</button>";
+      }else{
+        str += "<button class=''>men</button>";
+      }
+      if (correctType === "women"){
+        str += "<button class='correct'>women</button>";
+      }else{
+        str += "<button class=''>women</button>";
+      }
+      if (correctType === "okama"){
+        str += "<button class='correct'>okama</button>";
+      }else{
+        str += "<button>okama</button>";
+      }
+
     }
 
     $el.html(str);
-    
   };
 
 
   renderPic();
+
+  var renderScore = function(){
+    var $res = $("#res");
+    $res.html("score: " + score);
+  };
+
+  $("button").bind("click",function(e){
+    var target = $(this).attr("class");
+
+    if ($(this).attr("clicked")){
+      console.log("clicked");
+    }
+    if (target === "correct"){
+      score += 1;
+      renderScore();
+
+    }else{
+      renderScore();
+    }
+    $(this).attr("clicked",true);
+
+  });
+
+
 
 
 });

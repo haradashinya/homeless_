@@ -8,3 +8,10 @@ li {
 button {
   margin-bottom: 20px;
 }
+
+
+#res {
+  position: fixed;
+  top: 200px;
+  left: 500px;
+}
