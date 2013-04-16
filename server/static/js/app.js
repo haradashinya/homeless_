@@ -14,13 +14,14 @@ $(function(){
 
   // make picture's dir.
   var picDir = function(){
-
+    var chDir = function(){
+    };
     var idx = Math.floor(Math.random()  * 5) + 1;
     var randType = type();
     var str = "";
     str += "static/img/" + randType +  "/" + randType +idx + ".png"; 
     return str;
-    
+
   };
 
   var wrapped = function(html){
@@ -38,6 +39,19 @@ $(function(){
 
     for(var i = 0 ;  i < 5;i++){
       var dir = picDir();
+      if(data.length === 0){
+        data.push(dir);
+      }
+
+
+
+
+
+
+
+
+
+
       var correctType = dir.split('\/')[2];
 
       str += "<li><img class='pic' src='";
@@ -68,7 +82,6 @@ $(function(){
 
 
   renderPic();
-  console.log(data);
 
   var renderScore = function(){
     var $res = $("#res");
