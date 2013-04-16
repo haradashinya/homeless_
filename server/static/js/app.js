@@ -46,19 +46,16 @@ $(function(){
       str += "<div class='buttons'>";
       if (correctType === "men"){
         str += "<button class='correct' >men</button>";
-        data.push(0);
       }else{
         str += "<button class=''>men</button>";
       }
       if (correctType === "women"){
         str += "<button class='correct' >women</button>";
-        data.push(1);
       }else{
         str += "<button class=''>women</button>";
       }
       if (correctType === "okama"){
         str += "<button class='correct'>okama</button>";
-        data.push(2);
       }else{
         str += "<button>okama</button>";
       }
