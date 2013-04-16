@@ -46,7 +46,6 @@ $(function(){
         data.push(d);
       }
     }
-    console.log(data);
   };
 
   var wrapped = function(html){
@@ -106,13 +105,27 @@ $(function(){
 
     $closest = $(this).closest(".buttons");
     $correct = $(".correct");
-    $closest.html($correct.html());
+
+    var wrapped = function(str,isCorrect){
+      var res;
+      if (isCorrect === true){
+        res = "<div class='red'>";
+      }else{
+        res = "<div class='blue'>";
+      }
+
+      res += str;
+      res += "</div>";
+      return res;
+    };
 
     if (target === "correct"){
       score += 1;
       renderScore();
+      $closest.html(wrapped($correct.html(),true));
     }else{
       renderScore();
+      $closest.html(wrapped($correct.html()),false);
     }
     $(this).attr("clicked",true);
 

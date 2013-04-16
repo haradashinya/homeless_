@@ -1,3 +1,17 @@
+body {
+  font-size: sans-serif;
+  font-size: white;
+  background: black;
+}
+
+#main {
+  width: 960px;
+  margin: 0 auto;
+  color: white;
+
+}
+
+
 .pic {
   width: 200px;
   height: 200px;
@@ -7,6 +21,9 @@ li {
 }
 button {
   margin-bottom: 20px;
+  color: black;
+  background: white;
+  width: 66px;
 }
 
 
@@ -14,11 +31,17 @@ button {
   position: fixed;
   top: 200px;
   left: 500px;
+  font-size: 40px;
+
 }
 .red {
   background: red;
+  width: 200px;
+  margin-bottom: 10px;
 }
 
 .blue {
-  background: red;
+  background: blue;
+  width: 200px;
+  margin-bottom: 10px;
 }
