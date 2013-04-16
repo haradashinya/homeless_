@@ -1,20 +1,30 @@
 body {
+  width: 960px;
   font-size: sans-serif;
   font-size: white;
-  background: black;
+  background: #ff8080;
+  margin: 0 auto;
+
+
+
 }
+
+
 
 h1 {
   position: relative;
   background: #808080;
   display: block;
   text-align: center;
+  height: 50px;
+  line-height: 50px;
+  margin-bottom: 20px;
 }
 
 #main {
-  width: 960px;
-  margin: 0 auto;
+
   color: white;
+  background: black;
 
 }
 
@@ -24,7 +34,7 @@ h1 {
   height: 200px;
 }
 li {
-  list-style-type: none;
+
 }
 button {
   margin-bottom: 20px;
@@ -34,13 +44,8 @@ button {
 }
 
 
-#res {
-  position: fixed;
-  top: 200px;
-  left: 500px;
-  font-size: 40px;
 
-}
+
 .red {
   background: red;
   width: 200px;
@@ -52,3 +57,31 @@ button {
   width: 200px;
   margin-bottom: 10px;
 }
+ul {
+  position: relative;
+  left: 380px;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+.gameover {
+  background: red;
+  position: fixed;
+  z-index: 100;
+  color: white;
+  top: 300px;
+  left: 400px;
+  text-align: center;
+  font-size: 30px;
+  display: block;
+  padding: 10px 25px;
+  opacity: 0.8;
+}
+
+
+
+
+
+

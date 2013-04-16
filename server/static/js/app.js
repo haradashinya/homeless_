@@ -2,6 +2,7 @@ $(function(){
   console.log("called");
   var score = 0;
   var data = [];
+  var tappedCnt = 0;
 
   // return type of man/women/okama
 
@@ -94,13 +95,14 @@ $(function(){
 
   renderPic();
 
-  var renderScore = function(){
-    var $res = $("#res");
 
-    $res.html("score: " + score);
+
+  var popOver = function(){
+    $("body").append("<div class='gameover'>Game Over!<br>"+ "score: " + score + "</div>");
   };
 
   $("button").bind("click",function(e){
+    tappedCnt += 1;
     var target = $(this).attr("class");
 
     $closest = $(this).closest(".buttons");
@@ -121,13 +123,14 @@ $(function(){
 
     if (target === "correct"){
       score += 1;
-      renderScore();
       $closest.html(wrapped($correct.html(),true));
     }else{
-      renderScore();
       $closest.html(wrapped($correct.html()),false);
     }
-    $(this).attr("clicked",true);
+    if (tappedCnt === 5){
+      popOver();
+      console.log("clcl");
+    }
 
   });
 
