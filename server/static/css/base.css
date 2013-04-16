@@ -4,6 +4,13 @@ body {
   background: black;
 }
 
+h1 {
+  position: relative;
+  background: #808080;
+  display: block;
+  text-align: center;
+}
+
 #main {
   width: 960px;
   margin: 0 auto;
