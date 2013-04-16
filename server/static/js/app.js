@@ -3,10 +3,6 @@ $(function(){
 
   // return type of man/women/okama
 
-
-
-
-
   var type = function(){
     var types = ["men","women","okama"];
     var rand = Math.floor(Math.random()  * 3);
@@ -25,7 +21,7 @@ $(function(){
     
   };
 
-  var wrappedHtml = function(html){
+  var wrapped = function(html){
     html += "<button>men</button>";
     html += "<button>women</button>";
     html += "<button>okama</button>";
@@ -34,25 +30,27 @@ $(function(){
 
 
   var renderPic = function(){
-    var el = $("#pictures");
+    var str = "";
+    var $el = $("#pictures");
 
     for(var i = 0 ;  i < 5;i++){
-      var html = "";
       var dir = picDir();
-      html += "<li><img class='pic' src='";
-      html += dir;
-      html += "'></li>";
-      $(html).addClass("pic");
+      console.log(dir);
 
-      el.append(wrappedHtml(html));
-
+      str += "<li><img class='pic' src='";
+      str += dir;
+      str += "'></li>";
+      str += "<button>men</button>";
+      str += "<button>women</button>";
+      str += "<button>okama</button>";
     }
+
+    $el.html(str);
     
   };
 
 
   renderPic();
-
 
 
 });
